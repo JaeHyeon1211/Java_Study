@@ -1,0 +1,26 @@
+package com.mBoard.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import com.mBoard.entity.Board;
+
+@Mapper
+public interface BoardMapper {
+	
+	@Select("select seqno, userid, mwrite, mtitle, mregdate, mcontent from tbl_mboard order by seqno desc")
+	List<Board> selectList();
+	
+	@Select("select seqno, userid, mwrite, mtitle, mregdate, mcount from tbl_mboard where seqno=${seqno} ")
+	Board viewList(@Param("seqno")int seqno);
+	
+	
+	@Update("update tbl_mboard set mwriter = \'${mwriter}\', mtitle=\'${mtitle}\', mcontent=\'${mcontent}\' where seqno=${seqno}")
+	void updateList(@Param("mwriter") String mwriter, @Param("mtitle") String mtitle,@Param("mcontent") String mcontent, @Param ("seqno") int seqno)
+	
+
+}

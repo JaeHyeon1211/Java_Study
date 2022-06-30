@@ -1,0 +1,9 @@
+#DB Connention
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://127.0.0.1:3306/webdev
+spring.datasource.username=webmaster
+spring.datasource.password=1234
+
+#Upload File Configuration
+Spring.servlet.multipart.maxFileSize = 1024MB
+Spring.servlet.multipart.maxRequestSize=1024MB

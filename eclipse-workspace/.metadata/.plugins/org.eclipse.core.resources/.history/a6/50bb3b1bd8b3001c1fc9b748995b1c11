@@ -1,0 +1,45 @@
+package com.mBoard.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mBoard.entity.Board;
+import com.mBoard.mapper.BoardMapper;
+
+@Controller
+public class BoardController {
+	
+	@Autowired//의존성주입으로 mapper 클래스변수로 생성
+	BoardMapper mapper;
+	//
+	@GetMapping("/board/boardList")
+	void getBoardList(Model model) {
+	model.addAttribute("list", mapper.selectList());
+	}
+	//
+	@GetMapping("/board/boardView")
+	void getBoardView(Model model, @RequestParam("seqno")int seqno) {
+		model.addAttribute("view", mapper.viewList(seqno));
+	}
+	//게시물 등록 화면 보기
+	@GetMapping("/board/boardRegister")
+	void getBoardRegister() {}
+	
+	//게시물 등록
+	@PostMapping("/board/boardRegister")
+	public String postBoardRegister(Board board) {
+	mapper.insertList(board.getUserid(), board.getMwriter(), board.getMtitle(), board.getMcontent());
+	return "redirect:/board/boardList";
+	}
+	//게시물 수정 화면 보기
+	@GetMapping("/board/boardModify")
+	void getBoardModify(Model model, @RequestParam("seqno") int seqno) {
+		model.addAttribute("view",mapper.viewList(seqno));
+		
+	}
+	
+}

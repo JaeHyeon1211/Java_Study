@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\apache-tomcat-9.0.60\\lib\\servlet-api.jar",
+        "c:\\JavaStudy\\lib\\mariadb-java-client-2.7.3.jar"
+    ]
+}

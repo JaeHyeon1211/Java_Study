@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 등록</title>
+<script>
+function btn_delete(){
+	document.formDelete.action= '/board/boardModify?seqno=[[${view.seqno}]]';
+	document.formDelete.submit();
+}
+</script>
+</head>
+<body>
+
+<form name="formDelete" method ="post" onsubmit()>
+작성자 이름 : <input type = "text" name = "mwriter" th:value="${view.mwriter}"><br>
+아이디 : <input type = "text" name = "userid" th:value="${view.userid}"><br>
+게시물 제목 : <input type = "text" name = "mtitle" th:value="${view.mtitle}"><br>
+내용 <br><br>
+<textarea cols = 100 row = 300 name="mcontent" th:text="${view.mcontent}"></textarea>
+<br>
+<input type = "button" value = "등록" onclick="btn_delete()">
+</form>
+</body>
+</html>

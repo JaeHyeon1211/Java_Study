@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 상세 보기</title>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function btn_delete(){
+	if (confirm("삭제 고?")==true)
+		location.href = "/board/boardDelete?seqno=[[${view.seqno}]]"
+}
+function fileDownload(){
+	location.href = "/board/fileDownload?seqno=[[${view.seqno}]]"
+}
+function replyRegister(){
+	if($("#replycontent").val() == ""){
+		alert("댓글을 입력하세요.");
+		$("#replycontent").focus();
+		return false;
+	}
+	var queryString = $("form[name] = formreply").serialize();
+	$.ajax({
+		url: "/board/Reply?option=I",
+		type: "post",
+		dataType:"json",
+		data: queryString,
+		sucess: replyList,
+		error: function(data){
+			alert("서버 오류 문제로 댓글 등록이 실패했습니다.");
+		}
+	});
+	$("#replywriter").val("");
+	$("#replycontent").val("");
+}
+function replyList(){
+	var result = "";
+	$.each(list, function(index, item){
+		result += "<div id='replyListView'>";
+		result += "작성자 : " + item["replywriter"];
+		result += "<div style = 'width:50%; height:auto; border-top:1px solid gray; overflow:auto;'>";
+		result += "</div>";
+		result += "</div><br>";
+
+	})
+	$("#replyListView").remove();
+	$("#replayListView").html(result);
+}
+
+
+
+</script>
+
+</head>
+<body>
+<h1>게시물 상세 보기</h1>
+<br><br>
+
+작성자 이름 : <span th:text = "${view.mwriter}"></span><br>
+게시물 제목 : <span th:text = "${view.mtitle}"></span><br>
+작성 일자 : <span th:text = "${view.mregdate}"></span><br>
+내용 <br>
+<pre th:text = "${view.mcontent}"></pre>
+<br><br>
+<div th:if = "${view.filename != NULL}">
+업로드 파일명 : <a href = "javascript:fileDownload()"><span th:text = "${view.filename}"></span></a>
+</div>
+<div th:if = "${view.filename == NULL}">
+<span>등록된 파일이 없습니다.</span>
+</div>
+<br>
+[<a th:href = "@{'/board/boardModify?seqno=' + ${view.seqno}}">수정</a>] [<a href = "javascript:btn_delete()">삭제</a>] 
+
+<div class = "reply">
+	<p>댓글을 작성해 주세요 </p>
+	<form name = "formreply" method="post">
+	작성자 : <input type = "text" id = "replywriter" name ="replywriter"><br>
+	<textarea id = "replycontent" cols='80' rows='5' maxlength ='150' placeholder ='글자수 : 150자 이내'></textarea><br>
+	<input type = "button" value ="댓글등록" onclick="replyRegister()">
+	</form>
+<hr>
+	<div id = "replyList" style="width:100%; height:600px; overflow:auto;">
+		<div id = "replayListView">
+		</div>
+	</div>
+</div>
+<a href = "/board/boardList">뒤로가기</a><br>
+</body>
+</html>

@@ -1,0 +1,13 @@
+package com.mBoard.entity;
+
+import java.time.LocalDateTime;
+
+public class Reply {
+	private int replyseqno;
+	private int seqno;
+	private String replaycontent;
+	private String replaywriter;
+	private String mtitle;
+	private LocalDateTime replayregdate;
+
+}

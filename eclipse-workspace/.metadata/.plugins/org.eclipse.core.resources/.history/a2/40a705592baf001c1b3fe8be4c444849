@@ -1,0 +1,24 @@
+package com.test.exam03;
+//함수형 프로그램 표기법을 하려면 람다식을 사용해야됨
+@FunctionalInterface
+interface MyLamdaFunction {
+	int sum(int a, int b);
+}
+@FunctionalInterface
+interface MyPrint{
+	String printLamda();
+	
+}
+
+public class LamdaExam {
+	public static void main(String[] args) {
+		MyLamdaFunction lamdaFunction = (int a, int b) -> a+b;
+		System.out.println(lamdaFunction.sum(3, 4));
+		
+		MyPrint myPrint = () -> "Hello World 1";
+		System.out.println(myPrint.printLamda());
+		
+		
+	}
+
+}

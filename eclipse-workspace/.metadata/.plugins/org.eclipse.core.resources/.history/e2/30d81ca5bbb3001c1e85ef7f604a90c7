@@ -1,0 +1,5 @@
+package com.mBoard.mapper;
+
+public class BoardMapper {
+
+}

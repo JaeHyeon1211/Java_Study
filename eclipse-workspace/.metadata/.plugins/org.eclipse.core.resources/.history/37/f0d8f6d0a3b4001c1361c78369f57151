@@ -1,0 +1,51 @@
+package com.mBoard.entity;
+
+import java.time.LocalDateTime;
+
+public class Reply {
+	private int replyseqno;
+	private int seqno;
+	private String replaycontent;
+	private String replaywriter;
+	private String mtitle;
+	private LocalDateTime replayregdate;
+
+	public int getReplyseqno() {
+		return replyseqno;
+	}
+	public void setReplyseqno(int replyseqno) {
+		this.replyseqno = replyseqno;
+	}
+	public int getSeqno() {
+		return seqno;
+	}
+	public void setSeqno(int seqno) {
+		this.seqno = seqno;
+	}
+	public String getReplaycontent() {
+		return replaycontent;
+	}
+	public void setReplaycontent(String replaycontent) {
+		this.replaycontent = replaycontent;
+	}
+	public String getReplaywriter() {
+		return replaywriter;
+	}
+	public void setReplaywriter(String replaywriter) {
+		this.replaywriter = replaywriter;
+	}
+	public String getMtitle() {
+		return mtitle;
+	}
+	public void setMtitle(String mtitle) {
+		this.mtitle = mtitle;
+	}
+	public LocalDateTime getReplayregdate() {
+		return replayregdate;
+	}
+	public void setReplayregdate(LocalDateTime replayregdate) {
+		this.replayregdate = replayregdate;
+	}
+
+
+}

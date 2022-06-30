@@ -1,0 +1,5 @@
+package com.mBoard.controller;
+
+public class BoardController {
+
+}

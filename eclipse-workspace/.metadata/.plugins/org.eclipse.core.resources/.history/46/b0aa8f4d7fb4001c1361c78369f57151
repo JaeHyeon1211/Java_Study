@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 상세 보기</title>
+<script>
+function btn_delete(){
+	if (confirm("삭제 고?")==true)
+		location.href = "/board/boardDelete?seqno=[[${view.seqno}]]"
+}
+
+</script>
+
+</head>
+<body>
+<h1>게시물 상세 보기</h1>
+<br><br>
+
+작성자 이름 : <span th:text = "${view.mwriter}"></span><br>
+게시물 제목 : <span th:text = "${view.mtitle}"></span><br>
+작성 일자 : <span th:text = "${view.mregdate}"></span><br>
+내용 <br>
+<pre th:text = "${view.mcontent}"></pre>
+<br>
+[<a th:href = "@{'/board/boardModify?seqno=' + ${view.seqno}}">수정</a>] [<a href = "javascript:btn_delete()">삭제</a>] 
+
+
+<a href = "/board/boardList">뒤로가기</a><br>
+</body>
+</html>

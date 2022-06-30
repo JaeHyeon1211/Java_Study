@@ -1,0 +1,31 @@
+package com.test.exam03;
+
+import java.util.function.Supplier;
+
+//함수형 프로그램 표기법을 하려면 람다식을 사용해야됨
+@FunctionalInterface
+interface MyLamdaFunction {
+	int sum(int a, int b);
+}
+@FunctionalInterface
+interface MyPrint{
+	String printLamda();
+	
+}
+
+public class LamdaExam {
+	public static void main(String[] args) {
+		MyLamdaFunction lamdaFunction = (int a, int b) -> a+b;
+		System.out.println(lamdaFunction.sum(3, 4));
+		
+		MyPrint myPrint = () -> "Hello World 1";
+		System.out.println(myPrint.printLamda());
+		
+		//Supplier : 매개변수 없이 반환값만을 갖는 함수형 인터페이스
+		Supplier<String> supplier = () -> "Hello World 2";
+		System.out.println(supplier.get());
+		
+		
+	}
+
+}

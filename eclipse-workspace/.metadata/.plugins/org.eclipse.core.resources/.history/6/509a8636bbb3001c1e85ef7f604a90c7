@@ -1,0 +1,12 @@
+package com.mBoard.entity;
+
+public class Board {
+	private  int seqno;
+	private  tring userid;
+	private  string mwriter;
+	private  string mtitle;
+	private  LocalDataTime mregdate;
+	private  string mcontent;
+	
+	
+}

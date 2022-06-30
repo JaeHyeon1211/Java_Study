@@ -1,0 +1,5 @@
+package com.mBoard.entity;
+
+public class Board {
+
+}
